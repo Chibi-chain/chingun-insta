@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import Header from './components/Header'
+import Story from './components/Story'
+import Post from  './components/Post'
+import StoryList from './components/StoryList'
+import './App.scss'
+import stories from './data.js'
+import post from './post.js'
+import 'materialize-css/dist/css/materialize.min.css'
 
-function App() {
+
+const App = () => {
+  const [story, setStory] = useState(false)
+  const [storyDT, setStoryDT] = useState({});
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <>
+            {
+                story == true ?
+                    // TRUE
+                    <Story {...storyDT} setStory = {setStory} /> :
+                    // FALSE
+                    <>
+                     <Header />
+                        <div class="row container">
+                          <div class="col s12 m12 l8">
+                            <Post {...post[0]}/>
+                            <Post {...post[1]}/>
+                            <Post {...post[2]}/>
+                          </div>
+                          <div class="col l4">
+                            <StoryList stories = {stories} setStory = {setStory} setStoryDT = {setStoryDT}/>
+                          </div>
+                        </div>
+                     </>
+             }
+             </>
+         )
+     }
+  
 
 export default App;
