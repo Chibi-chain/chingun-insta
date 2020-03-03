@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import M from 'materialize-css/dist/js/materialize.min.js'
 import './Post.scss'
 
-const Post = ({ avatarUrl, postedUser, imgUrls }) => {
+const Post = ({ avatarUrl, postedUser, imgurls:imgUrls }) => {
     const modalRef = useRef(null);
     const carouselRef = useRef(null)
     const carouselInstance = useRef(null);
